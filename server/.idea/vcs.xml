@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="VcsDirectoryMappings">
+    <mapping directory="$PROJECT_DIR$/vendor/github.com/PuerkitoBio/purell" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/vendor/github.com/PuerkitoBio/urlesc" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/vendor/github.com/dgrijalva/jwt-go" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/vendor/github.com/ghodss/yaml" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/vendor/github.com/gin-contrib/sse" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/vendor/github.com/go-openapi/jsonpointer" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/vendor/github.com/go-openapi/jsonreference" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/vendor/github.com/go-openapi/spec" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/vendor/github.com/go-openapi/swag" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/vendor/github.com/mailru/easyjson" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/vendor/github.com/mattn/go-isatty" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/vendor/github.com/pkg/errors" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/vendor/github.com/swaggo/gin-swagger" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/vendor/github.com/swaggo/swag" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/vendor/github.com/urfave/cli" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/vendor/golang.org/x/net" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/vendor/golang.org/x/text" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/vendor/golang.org/x/tools" vcs="Git" />
+  </component>
+</project>

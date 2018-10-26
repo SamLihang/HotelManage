@@ -1,0 +1,16 @@
+server:
+  mode: debug
+  addr: :8000
+  read_timeout: 10
+  write_timeout: 10
+
+app:
+  log_path: E:/Go/runtime/log
+  secret:
+
+database:
+  type: mysql
+  user: root
+  password: 777777
+  name: go_cms
+  charset: utf8mb4
