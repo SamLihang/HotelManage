@@ -18,5 +18,6 @@
   * pc和移动两端展示
 
 * 前端
-
+  * 移动端 nuxt + vue全家桶
+  * pc端 electron + vue
 * 后端
