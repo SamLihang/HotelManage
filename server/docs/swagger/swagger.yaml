@@ -1,0 +1,18 @@
+basePath: '{{.BasePath}}'
+host: '{{.Host}}'
+info:
+  contact: {}
+  description: '{{.Description}}'
+  license: {}
+  title: '{{.Title}}'
+  version: '{{.Version}}'
+paths:
+  /api/v1/login:
+    post:
+      consumes:
+      - application/json
+      description: 用户注册
+      produces:
+      - application/json
+      summary: 用户注册
+swagger: "2.0"
