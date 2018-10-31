@@ -14,7 +14,8 @@ module.exports = {
       { hid: 'description', name: 'description', content: pkg.description }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      
     ]
   },
 
@@ -35,6 +36,7 @@ module.exports = {
   */
   plugins: [
     '@/plugins/mint-ui',
+    { src: '@/plugins/flexible', ssr: false }
   ],
 
   /*
