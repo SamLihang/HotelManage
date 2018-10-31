@@ -5,13 +5,16 @@
       <base-input type="text" placeholder="账号" v-model="account"></base-input>
       <base-input type="text" placeholder="密码" v-model="password"></base-input>
     </div>
-    <mt-button type="primary" size="normal" class="loginBtn">登陆</mt-button>
+    <nuxt-link to="/menu">
+      <mt-button type="primary" size="normal" class="loginBtn">登陆</mt-button>
+    </nuxt-link>
   </div>
 </template>
 
 <script>
 import baseInput from '@/components/layout/baseInput'
 export default {
+  layout: 'login',
   data () {
     return {
       account: '',
