@@ -4,6 +4,21 @@
   </div>
 </template>
 
+<script>
+  export default {
+    methods: {
+      setHeight() {
+        this.$store.commit('setHeight', document.body.clientHeight)
+      }
+    },
+    mounted() {
+      this.setHeight()
+      window.addEventListener('resize', this.setHeight, false)
+    },
+  }
+</script>
+
+
 <style>
 * {
   margin: 0;
