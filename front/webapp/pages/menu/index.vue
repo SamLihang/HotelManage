@@ -6,7 +6,12 @@
       <div>
         <div v-for="(catagory,index) in dataSource" :key="index">
           <mt-cell :title="catagory.name" is-link  :to="{path: '/menu/catagory', query: {name: catagory.name}}"></mt-cell>
-          <mt-cell-swipe :title="item.name" v-for="(item, index) in catagory.catagoryItem" :key="index"></mt-cell-swipe>
+          <mt-cell-swipe :title="item.name" v-for="(item, index) in catagory.catagoryItem" :key="index">
+            <div class="cell_content">
+              <p class="cell_unit">斤</p>
+              <number></number>
+            </div>
+          </mt-cell-swipe>
         </div>
       </div>
     </base-scroll>
@@ -33,6 +38,7 @@
 
 <script>
 import baseScroll from '@/components/layout/baseScroll'
+import number from '@/components/commen/number'
 import { mapState } from 'vuex';
 export default {
   name: "",
@@ -74,10 +80,12 @@ export default {
     }
   },
   components: {
-    baseScroll
+    number,
+    baseScroll,
   },
   data () {
     return {
+      selected: null,
       topStatus: '',
       searchKey: '',
       scrollTop: 0,
@@ -132,6 +140,17 @@ export default {
     left: 0;
     width: 100%;
     height: 100%;
+  }
+  .cell_content {
+    display: flex;
+    width: 100%;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+    .cell_unit {
+      width: 1rem;
+      margin-right: 2rem;
+    }
   }
 </style>
 <style>
