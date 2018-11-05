@@ -9,34 +9,18 @@
           <mt-cell-swipe :title="item.name" v-for="(item, index) in catagory.catagoryItem" :key="index">
             <div class="cell_content">
               <p class="cell_unit">斤</p>
-              <number></number>
+              <number v-model="item.num"></number>
             </div>
           </mt-cell-swipe>
         </div>
       </div>
     </base-scroll>
-    <mt-tabbar v-model="selected">
-      <mt-tab-item id="外卖">
-        <img slot="icon" src="@/assets/image/boss.png">
-        外卖
-      </mt-tab-item>
-      <mt-tab-item id="订单">
-        <img slot="icon" src="@/assets/image/boss.png">
-        订单
-      </mt-tab-item>
-      <mt-tab-item id="发现">
-        <img slot="icon" src="@/assets/image/boss.png">
-        发现
-      </mt-tab-item>
-      <mt-tab-item id="我的">
-        <img slot="icon" src="@/assets/image/boss.png">
-        我的
-      </mt-tab-item>
-    </mt-tabbar>
+    <base-footer />
   </div>
 </template>
 
 <script>
+import baseFooter from '@/components/layout/baseFooter'
 import baseScroll from '@/components/layout/baseScroll'
 import number from '@/components/commen/number'
 import { mapState } from 'vuex';
@@ -48,32 +32,32 @@ export default {
         {
           name: '蔬菜类',
           catagoryItem: [
-            { name: '青菜' },
-            { name: '青菜' },
-            { name: '青菜' },
-            { name: '青菜' },
-            { name: '青菜' },
-            { name: '青菜' },
-            { name: '青菜' },
-            { name: '青菜' },
-            { name: '青菜' },
+            { name: '青菜', num: 1 },
+            { name: '青菜', num: 1 },
+            { name: '青菜', num: 1 },
+            { name: '青菜', num: 1 },
+            { name: '青菜', num: 1 },
+            { name: '青菜', num: 1 },
+            { name: '青菜', num: 1 },
+            { name: '青菜', num: 1 },
+            { name: '青菜', num: 1 },
+            { name: '青菜', num: 1 },
+            { name: '青菜', num: 1 },
           ]
         },
          {
           name: '肉类',
           catagoryItem: [
-            { name: '猪肉' },
-            { name: '猪肉' },
-            { name: '猪肉' },
-            { name: '猪肉' },
-            { name: '猪肉' },
-            { name: '猪肉' },
-            { name: '猪肉' },
-            { name: '猪肉' },
-            { name: '猪肉' },
-            { name: '猪肉' },
-            { name: '猪肉' },
-            { name: '猪肉' },
+            { name: '猪肉' ,num: 1},
+            { name: '猪肉' ,num: 1},
+            { name: '猪肉' ,num: 1},
+            { name: '猪肉' ,num: 1},
+            { name: '猪肉' ,num: 1},
+            { name: '猪肉' ,num: 1},
+            { name: '猪肉' ,num: 1},
+            { name: '猪肉' ,num: 1},
+            { name: '猪肉' ,num: 1},
+            { name: '猪肉' ,num: 1},
           ]
         }
       ]
@@ -81,6 +65,7 @@ export default {
   },
   components: {
     number,
+    baseFooter,
     baseScroll,
   },
   data () {

@@ -2,7 +2,7 @@
 <template>
   <div class="number">
     <button class="add"><img src="@/assets/icon/sub.svg" alt=""></button>
-    <input class="number_inp" :type="number" v-model="val">
+    <input class="number_inp" type="number" v-model="val">
     <button class="sub"><img src="@/assets/icon/add.svg" alt=""></button>
   </div>
 </template>
