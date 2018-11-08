@@ -4,18 +4,25 @@
     <mt-search v-model="searchKey" class="searchbar"></mt-search>
     <base-scroll class="scroller" :height="scrollHeight" :startScroll="scrollTop" @loadTop="loadTop" @loadBottom="loadBottom" ref="scroll">
       <div>
-        <div v-for="(catagory,index) in dataSource" :key="index">
-          <mt-cell :title="catagory.name" is-link  :to="{path: '/menu/catagory', query: {name: catagory.name}}"></mt-cell>
-          <mt-cell-swipe :title="item.name" v-for="(item, index) in catagory.catagoryItem" :key="index">
-            <div class="cell_content">
-              <p class="cell_unit">斤</p>
-              <number v-model="item.num"></number>
-            </div>
-          </mt-cell-swipe>
+        <div v-for="(catagory,index) in dataSource" :key="index" class="catagory">
+          <mt-cell class="catagory_title" :title="catagory.name" is-link  :to="{path: '/menu/catagory', query: {name: catagory.name}}"></mt-cell>
+          <div class="cell_content" v-for="(item, index) in catagory.catagoryItem" :key="index" @click.stop="editItem">
+            <h5 class="cell_name">{{item.name}}</h5>
+            <p class="cell_unit">斤</p>
+            <span class="cell_number">{{item.num}}</span>
+          </div>
         </div>
       </div>
     </base-scroll>
     <base-footer />
+    <mt-popup
+      v-model="popupVisible"
+      position="bottom"
+      class="popup">
+      <div class="popupContent">
+        
+      </div>
+    </mt-popup>
   </div>
 </template>
 
@@ -74,9 +81,13 @@ export default {
       topStatus: '',
       searchKey: '',
       scrollTop: 0,
+      popupVisible: false,
     };
   },
   methods: {
+    editItem() {
+      this.popupVisible = true;
+    },
     loadTop() {
       console.log('load top')
       setTimeout(() => {
@@ -126,21 +137,56 @@ export default {
     width: 100%;
     height: 100%;
   }
+  .catagory {
+    background: #dff2ff;
+    padding-bottom: .3rem;
+    &+.catagory {
+      margin-top: .4rem;
+    }
+    .catagory_title {
+      background: #dff2ff;
+    }
+  }
   .cell_content {
     display: flex;
-    width: 100%;
+    width: 90%;
+    margin: 0 auto;
+    height: 1.5rem;
+    border-radius: .1rem;
+    background: #a1bd9f;
     flex-flow: row nowrap;
     justify-content: space-between;
     align-items: center;
+    &+.cell_content {
+      margin-top: .3rem;
+    }
+    .cell_name {
+      width: 2rem;
+      margin-left: 1rem;
+      font-size: .4rem;
+    }
     .cell_unit {
       width: 1rem;
-      margin-right: 2rem;
+      font-size: .3rem;
+      color: #333;
+    }
+    .cell_number {
+      width: 2rem;
+      font-size: .4rem;
+    }
+  }
+  .popup {
+    width: 100%;
+    .popupContent {
+      height: 3rem;
+      width:100%; 
+      background: #fff;
     }
   }
 </style>
 <style>
   .mint-searchbar {
-    background-color: #26a2ff
+    background-color: #6194bb
   }
   .mint-searchbar-core {
     text-indent: .1rem;

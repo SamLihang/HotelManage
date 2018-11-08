@@ -1,7 +1,5 @@
 <template>
-  <div>
-    <nuxt/>
-  </div>
+    <nuxt class="wrapper"/>
 </template>
 
 <script>
@@ -39,6 +37,18 @@ html {
 }
 body {
   height: 100%;
-  background: #4a6962;
+  background: #efefef
+}
+#__nuxt, #__layout {
+  height: 100%;
+}
+.mint-tabbar > .mint-tab-item.is-selected {
+  color: #6194bb !important
+}
+.mint-searchbar-cancel {
+  color: #fff;
+}
+.mint-header, .mint-button--primary {
+  background-color: #6194bb !important
 }
 </style>
