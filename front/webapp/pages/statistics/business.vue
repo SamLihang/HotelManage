@@ -1,13 +1,44 @@
 <template>
-
+  <div>
+    <mt-header title="今日营业额" class="head">
+      <mt-button icon="back" slot="left" @click.stop="goback">返回</mt-button>
+      <mt-button slot="right" @click.native="save">保存</mt-button>
+    </mt-header>
+    <div class="input-box">
+      <div class="lable">采购额：</div>
+      <base-input input-width="50%"></base-input>
+    </div>
+    <div class="input-box">
+      <div class="lable">营业额：</div>
+      <base-input input-width="50%"></base-input>
+    </div>
+  </div>
 </template>
 
 <script>
+  import BaseInput from '../../components/layout/baseInput'
     export default {
-        name: "businessIncome"
+        name: "businessIncome",
+      components:{
+          BaseInput
+      },
+      computed: {
+        goback() {
+          this.$router.go(-1)
+        },
+        save() {
+          this.goback()
+        }
+      }
     }
 </script>
 
-<style scoped>
-
+<style lang="scss" scoped>
+.input-box{
+  display: flex;
+  flex-direction: row;
+  .lable{
+    font-size: .4rem;
+  }
+}
 </style>
