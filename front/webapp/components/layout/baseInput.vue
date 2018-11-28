@@ -1,8 +1,8 @@
 <!--  author:   Date:  -->
 <template>
-  <div class="baseInput">
-    <span class="baseInput_placeholder" :class="{active: val}">{{placeholder}}</span>
-    <input class="baseInput_input" :type="type" v-model="val">
+  <div class="baseInput" :class="`baseInput_${mold}`">
+    <span class="baseInput_placeholder" :class="{active: val}" v-if="mold === 'float'">{{placeholder}}</span>
+    <input class="baseInput_input" :type="type" v-model="val" :placeholder="mold === 'base' ? placeholder : ''">
   </div>
 </template>
 
@@ -25,6 +25,10 @@ export default {
     type: {
       type: String,
       default: 'text'
+    },
+    mold: { //base,  float
+      type: String,
+      default: 'base'
     },
     value: ''
   },
@@ -52,7 +56,6 @@ export default {
   .baseInput {
     width: 100%;
     height: .8rem;
-    margin-top: .8rem;
     position: relative;
     .baseInput_placeholder {
       position: absolute;
@@ -79,6 +82,9 @@ export default {
       border: none;
       border-radius: 4px;
       text-indent: .2rem;
+    }
+    &.baseInput_float {
+      margin-top: .8rem;
     }
   }
 </style>

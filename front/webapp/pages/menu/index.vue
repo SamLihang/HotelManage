@@ -6,7 +6,7 @@
       <div>
         <div v-for="(catagory,index) in dataSource" :key="index" class="catagory">
           <mt-cell class="catagory_title" :title="catagory.name" is-link  :to="{path: '/menu/catagory', query: {name: catagory.name}}"></mt-cell>
-          <div class="cell_content" v-for="(item, index) in catagory.catagoryItem" :key="index" @click.stop="editItem">
+          <div class="cell_content" v-for="(item, i) in catagory.catagoryItem" :key="i" @click.stop="editItem(index,i)">
             <h5 class="cell_name">{{item.name}}</h5>
             <p class="cell_unit">斤</p>
             <span class="cell_number">{{item.num}}</span>
@@ -20,7 +20,13 @@
       position="bottom"
       class="popup">
       <div class="popupContent">
-        
+        <h5 class="pop_name">菜名：{{editData.name}}</h5>
+        <div class="pop_num">
+          <p>数量：</p><number v-model="editData.num"></number>
+        </div>
+        <div class="pop_mark">
+          <p>备注：</p><base-input v-model="editData.remark"></base-input>
+        </div>
       </div>
     </mt-popup>
   </div>
@@ -29,6 +35,7 @@
 <script>
 import baseFooter from '@/components/layout/baseFooter'
 import baseScroll from '@/components/layout/baseScroll'
+import baseInput from '@/components/layout/baseInput'
 import number from '@/components/commen/number'
 import { mapState } from 'vuex';
 export default {
@@ -39,32 +46,36 @@ export default {
         {
           name: '蔬菜类',
           catagoryItem: [
-            { name: '青菜', num: 1 },
-            { name: '青菜', num: 1 },
-            { name: '青菜', num: 1 },
-            { name: '青菜', num: 1 },
-            { name: '青菜', num: 1 },
-            { name: '青菜', num: 1 },
-            { name: '青菜', num: 1 },
-            { name: '青菜', num: 1 },
-            { name: '青菜', num: 1 },
-            { name: '青菜', num: 1 },
-            { name: '青菜', num: 1 },
+            { name: '青菜', num: 1, remark: "sssafdfa" },
+            { name: '青菜', num: 1, remark: "sssafdfa" },
+            { name: '青菜', num: 1, remark: "sssafdfa" },
+            { name: '青菜', num: 1, remark: "sssafdfa" },
+            { name: '青菜', num: 1, remark: "sssafdfa" },
+            { name: '青菜', num: 1, remark: "sssafdfa" },
+            { name: '青菜', num: 1, remark: "sssafdfa" },
+            { name: '青菜', num: 1, remark: "sssafdfa" },
+            { name: '青菜', num: 1, remark: "sssafdfa" },
+            { name: '青菜', num: 1, remark: "sssafdfa" },
+            { name: '青菜', num: 1, remark: "sssafdfa" },
+            { name: '青菜', num: 1, remark: "sssafdfa" },
           ]
         },
          {
           name: '肉类',
           catagoryItem: [
-            { name: '猪肉' ,num: 1},
-            { name: '猪肉' ,num: 1},
-            { name: '猪肉' ,num: 1},
-            { name: '猪肉' ,num: 1},
-            { name: '猪肉' ,num: 1},
-            { name: '猪肉' ,num: 1},
-            { name: '猪肉' ,num: 1},
-            { name: '猪肉' ,num: 1},
-            { name: '猪肉' ,num: 1},
-            { name: '猪肉' ,num: 1},
+            { name: '猪肉' ,num: 1, remark: "adfasdfafa"},
+            { name: '猪肉' ,num: 1, remark: "adfasdfafa"},
+            { name: '猪肉' ,num: 1, remark: "adfasdfafa"},
+            { name: '猪肉' ,num: 1, remark: "adfasdfafa"},
+            { name: '猪肉' ,num: 1, remark: "adfasdfafa"},
+            { name: '猪肉' ,num: 1, remark: "adfasdfafa"},
+            { name: '猪肉' ,num: 1, remark: "adfasdfafa"},
+            { name: '猪肉' ,num: 1, remark: "adfasdfafa"},
+            { name: '猪肉' ,num: 1, remark: "adfasdfafa"},
+            { name: '猪肉' ,num: 1, remark: "adfasdfafa"},
+            { name: '猪肉' ,num: 1, remark: "adfasdfafa"},
+            { name: '猪肉' ,num: 1, remark: "adfasdfafa"},
+            { name: '猪肉' ,num: 1, remark: "adfasdfafa"},
           ]
         }
       ]
@@ -74,6 +85,7 @@ export default {
     number,
     baseFooter,
     baseScroll,
+    baseInput,
   },
   data () {
     return {
@@ -81,11 +93,13 @@ export default {
       topStatus: '',
       searchKey: '',
       scrollTop: 0,
+      editData: {},
       popupVisible: false,
     };
   },
   methods: {
-    editItem() {
+    editItem(index,i) {
+      this.editData = this.dataSource[index].catagoryItem[i]
       this.popupVisible = true;
     },
     loadTop() {
@@ -181,6 +195,25 @@ export default {
       height: 3rem;
       width:100%; 
       background: #fff;
+      padding: .5rem;
+      font-size: .4rem;
+      .pop_name {
+        font-size: .5rem
+      }
+      .pop_num {
+        display: flex;
+        flex-flow: row nowrap;
+        p {
+          white-space: nowrap;
+        }
+      }
+      .pop_mark {
+        display: flex;
+        flex-flow: row nowrap;
+        p {
+          white-space: nowrap;
+        }
+      }
     }
   }
 </style>
