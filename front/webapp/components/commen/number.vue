@@ -23,10 +23,6 @@ export default {
       type: String,
       default: ''
     },
-    type: {
-      type: String,
-      default: 'text'
-    },
     value: ''
   },
   methods: {

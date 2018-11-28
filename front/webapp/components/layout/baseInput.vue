@@ -17,6 +17,7 @@
         val: this.value
       };
     },
+
     props: {
       value: '',
       placeholder: {
@@ -37,6 +38,7 @@
       }
     },
     methods: {
+
 
     },
     computed: {
