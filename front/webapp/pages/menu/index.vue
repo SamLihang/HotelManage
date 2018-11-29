@@ -109,7 +109,7 @@ export default {
     }),
     scrollHeight() {
       return this.height - 44 - 55
-    }
+    } 
   },
   mounted() {
   },

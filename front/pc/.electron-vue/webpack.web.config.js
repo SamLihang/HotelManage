@@ -91,6 +91,9 @@ let webConfig = {
       }
     ]
   },
+  node: {
+    fs: 'empty',
+  },
   plugins: [
     new VueLoaderPlugin(),
     new MiniCssExtractPlugin({filename: 'styles.css'}),

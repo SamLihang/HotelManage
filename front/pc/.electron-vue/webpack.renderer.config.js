@@ -116,6 +116,7 @@ let rendererConfig = {
     ]
   },
   node: {
+    fs: 'empty',
     __dirname: process.env.NODE_ENV !== 'production',
     __filename: process.env.NODE_ENV !== 'production'
   },
