@@ -1,58 +1,67 @@
 <!--  author:   Date:  -->
 <template>
-  <div class="baseInput">
-    <span class="baseInput_placeholder" :class="{active: val}">{{placeholder}}</span>
-    <input class="baseInput_input" :type="type" v-model="val">
+  <div class="baseInput" :class="`baseInput_${mold}`" :style="{width:inputWidth}">
+    <span class="baseInput_placeholder" :class="{active: val}" v-if="mold === 'float'">{{placeholder}}</span>
+    <input class="baseInput_input" :type="type" v-model="val" :placeholder="mold === 'base' ? placeholder : ''">
   </div>
 </template>
 
 <script>
-export default {
-  name: "baseInput",
-  components: {
+  export default {
+    name: "baseInput",
+    components: {
 
-  },
-  data () {
-    return {
-      val: this.value
-    };
-  },
-  props: {
-    placeholder: {
-      type: String,
-      default: ''
     },
-    type: {
-      type: String,
-      default: 'text'
+    data () {
+      return {
+        val: this.value
+      };
     },
-    value: ''
-  },
-  methods: {
 
-  },
-  computed: {
-
-  },
-  watch: {
-    value: function (newVal, oldVal) {
-      this.val = newVal
+    props: {
+      value: '',
+      placeholder: {
+        type: String,
+        default: ''
+      },
+      type: {
+        type: String,
+        default: 'text'
+      },
+      mold: { //base,  float
+        type: String,
+        default: 'base'
+      },
+      inputWidth: {
+        type: String,
+        default: '100%'
+      }
     },
-    val: function (newVal, oldVal) {
-      this.$emit('input', newVal)
-    }
-  },
-  mounted() {
+    methods: {
 
-  },
-}
+
+    },
+    computed: {
+
+    },
+    watch: {
+      value: function (newVal, oldVal) {
+        this.val = newVal
+      },
+      val: function (newVal, oldVal) {
+        this.$emit('input', newVal)
+      }
+    },
+    mounted() {
+
+    },
+  }
 
 </script>
 <style lang='scss' scoped>
   .baseInput {
     width: 100%;
     height: .8rem;
-    margin-top: .8rem;
     position: relative;
     .baseInput_placeholder {
       position: absolute;
@@ -61,7 +70,7 @@ export default {
       z-index: 1;
       font-size: .4rem;
       color: #999;
-      line-height: .8rem;  
+      line-height: .8rem;
       transition: all ease-in-out .2s;
       &.active {
         top: -.8rem;
@@ -79,6 +88,9 @@ export default {
       border: none;
       border-radius: 4px;
       text-indent: .2rem;
+    }
+    &.baseInput_float {
+      margin-top: .8rem;
     }
   }
 </style>

@@ -47,7 +47,7 @@ export default {
       },
       bg: {
         type: String,
-        default: '#fff',
+        default: 'none',
       },
       startScroll: {
         type: Number,

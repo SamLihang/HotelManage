@@ -1,9 +1,9 @@
 <template>
-  <div>
+  <div class="wrapper">
     <img class="headimg" src="@/assets/image/employee.png" alt="">
     <div class="login">
-      <base-input type="text" placeholder="账号" v-model="account"></base-input>
-      <base-input type="text" placeholder="密码" v-model="password"></base-input>
+      <base-input type="text" placeholder="账号" mold="float" v-model="account"></base-input>
+      <base-input type="text" placeholder="密码" mold="float" v-model="password"></base-input>
     </div>
     <nuxt-link to="/menu">
       <mt-button type="primary" size="normal" class="loginBtn">登陆</mt-button>
@@ -30,6 +30,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+  .wrapper {
+    height: 100%;
+    background: #4a6962;
+  }
   .headimg {
     position: relative;
     width: 4rem;
@@ -55,3 +59,4 @@ export default {
     margin-top: .5rem;
   }
 </style>
+
