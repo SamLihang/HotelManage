@@ -1,20 +1,23 @@
 <template>
   <div>
-    <mt-header title="今日营业额" class="head">
+    <mt-header title="蔬菜类" class="head">
       <mt-button icon="back" slot="left" @click.stop="goback">返回</mt-button>
       <mt-button slot="right" @click.native="save">保存</mt-button>
     </mt-header>
     <main>
       <div class="input-box">
-        <div class="lable">采购额：</div>
+        <div class="lable">菜名：</div>
         <base-input input-width="50%"></base-input>
       </div>
       <div class="input-box">
-        <div class="lable">营业额：</div>
+        <div class="lable">规格：</div>
+        <base-input input-width="50%"></base-input>
+      </div>
+      <div class="input-box">
+        <div class="lable">备注：</div>
         <base-input input-width="50%"></base-input>
       </div>
     </main>
-  
   </div>
 </template>
 
@@ -37,17 +40,14 @@
 </script>
 
 <style lang="scss" scoped>
-main{
-  .input-box{
-    display: flex;
-    flex-direction: row;
-    justify-content:center;
-    margin-top: 1rem;
-    line-height: 0.8rem;
-    .lable{
-      font-size: .4rem;
-    }
-  }  
-}
-
+.input-box{
+  display: flex;
+  flex-direction: row;
+  justify-content:center;
+  margin-top: 1rem;
+  line-height: 0.8rem;
+  .lable{
+    font-size: .4rem;
+  }
+} 
 </style>
