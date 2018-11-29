@@ -7,15 +7,19 @@
     <main>
       <div class="input-box">
         <div class="lable">菜名：</div>
-        <base-input input-width="50%"></base-input>
+        <base-input v-model="fruitName" width="50%"></base-input>
       </div>
       <div class="input-box">
         <div class="lable">规格：</div>
-        <base-input input-width="50%"></base-input>
+        <base-input v-model="size" type="number" width="50%"></base-input>
       </div>
       <div class="input-box">
         <div class="lable">备注：</div>
-        <base-input input-width="50%"></base-input>
+        <base-input v-model="tips" width="50%"></base-input>
+      </div>
+      <div>
+        <div class="imgBox"><img v-bind:src="imgPath" alt=""></div>
+        <upload-img @refDom="refDom" @fileChange="getImg" ></upload-img>
       </div>
     </main>
   </div>
@@ -23,10 +27,21 @@
 
 <script>
   import BaseInput from '@/components/layout/baseInput'
+  import UploadImg from '@/components/commen/uploadImg'
+  
     export default {
-        name: "businessIncome",
+      name: "businessIncome",
+      data(){
+        return {
+          fruitName:'',
+          size:'',
+          tips:'',
+          imgPath:''
+        }
+      },  
       components:{
-          BaseInput
+          BaseInput,
+          UploadImg
       },
       computed: {
         goback() {
@@ -34,6 +49,18 @@
         },
         save() {
           this.goback()
+        }
+      },
+      methods: {
+        refDom() {
+          console.log(1)
+        },
+        getImg(value) {
+            console.log(value.base64);
+            this.imgPath = value.base64;
+            // console.log(value.file);
+            // console.log(value.files);
+
         }
       }
     }

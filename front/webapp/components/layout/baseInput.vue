@@ -1,6 +1,6 @@
 <!--  author:   Date:  -->
 <template>
-  <div class="baseInput" :class="`baseInput_${mold}`" :style="{width:inputWidth}">
+  <div class="baseInput" :class="`baseInput_${mold}`" :style="{width:width}">
     <span class="baseInput_placeholder" :class="{active: val}" v-if="mold === 'float'">{{placeholder}}</span>
     <input class="baseInput_input" :type="type" v-model="val" :placeholder="mold === 'base' ? placeholder : ''">
   </div>
@@ -32,7 +32,7 @@
         type: String,
         default: 'base'
       },
-      inputWidth: {
+      width: {
         type: String,
         default: '100%'
       }

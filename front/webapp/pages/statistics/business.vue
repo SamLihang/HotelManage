@@ -7,11 +7,11 @@
     <main>
       <div class="input-box">
         <div class="lable">采购额：</div>
-        <base-input input-width="50%"></base-input>
+        <base-input v-model="purchase" width="50%"></base-input>
       </div>
       <div class="input-box">
         <div class="lable">营业额：</div>
-        <base-input input-width="50%"></base-input>
+        <base-input v-model="income" width="50%"></base-input>
       </div>
     </main>
   
@@ -21,16 +21,23 @@
 <script>
   import BaseInput from '@/components/layout/baseInput'
     export default {
-        name: "businessIncome",
+      name: "businessIncome",
+      data(){
+        return {
+          purchase:'',
+          income:''
+        }
+      },
       components:{
           BaseInput
       },
       computed: {
-        goback() {
-          this.$router.go(-1)
-        },
+        // goback() {
+        //   this.$router.go(-1)
+        // },
         save() {
-          this.goback()
+          console.log(this.purchase);
+          // this.goback();
         }
       }
     }
