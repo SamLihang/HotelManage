@@ -5,7 +5,6 @@
            class="file-input"
            accept="image/*"
            :multiple="multiple"
-           :value="imgVal"
            @change="change"/>
   </div>
 </template>
@@ -20,7 +19,6 @@ export default {
     props: {
       multiple: false,
       max: 1,
-      imgVal:''
     },
     data() {
       return {

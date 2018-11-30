@@ -24,6 +24,7 @@
           <img class="delete" @click="removeImg" src="@/assets/icon/delete.png" v-show="!IsUpload" alt="">
           <upload-img v-show="IsUpload"  @fileChange="getImg"></upload-img>
         </div>
+        
       </div>
     </main>
   </div>
@@ -38,6 +39,7 @@
       data(){
         return {
           dish:{
+            id:'',
             fruitName:'',
             size:'',
             tips:'',
@@ -53,8 +55,20 @@
           this.$router.go(-1)
         },
       },
+      mounted() {
+        this.getDish()
+  },
+      
       methods: {
-        
+        getDish(){
+          this.id = this.$route.query.id; //获取id
+          this.dish = {
+            fruitName:'白菜',
+            size:'1',
+            tips:'炖肉专用',
+            imgPath:'',
+          }
+        },
         getImg(value) {
             this.dish.imgPath = value.base64;
             this.IsUpload = false;
@@ -64,7 +78,7 @@
             this.IsUpload = true;
         },
         save() {
-          console.table(this.dish)
+          console.log(this.dish)
           // this.goback()
         }
       }
