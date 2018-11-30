@@ -20,7 +20,7 @@
       <div class="input-box up-box">
         <div class="lable">上传图片：</div>
         <div class="imgBox">
-          <img v-bind:src="imgPath" alt="">
+          <img :src="imgPath" alt="">
           <img class="delete" @click="removeImg" src="@/assets/icon/delete.png" v-show="!IsUpload" alt="">
         </div>
         <upload-img v-show="IsUpload"  @fileChange="getImg" ></upload-img>
@@ -59,10 +59,9 @@
       },
       methods: {
         getImg(value) {
+          console.log(value.base64)
             this.imgPath = value.base64;
             this.IsUpload = false;
-
-
         },
         removeImg(){
           this.imgPath = '';

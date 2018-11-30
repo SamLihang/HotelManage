@@ -5,6 +5,7 @@
            class="file-input"
            accept="image/*"
            :multiple="multiple"
+           :value="imgVal"
            @change="change"/>
   </div>
 </template>
@@ -18,7 +19,8 @@ export default {
     name: 'updatefile',
     props: {
       multiple: false,
-      max: 1
+      max: 1,
+      imgVal:''
     },
     data() {
       return {
@@ -70,6 +72,7 @@ export default {
                 };
                 self.canvasDataUrl(e.target.result, w, h, compressPic);
               };
+              this.imgVal = '';
               fr.onerror = (e) => {
                 // Indicator.close();
               };
