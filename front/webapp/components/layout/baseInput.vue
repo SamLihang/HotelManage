@@ -7,9 +7,9 @@
 </template>
 
 <script>
-export default {
-  name: "baseInput",
-  components: {
+  export default {
+    name: "baseInput",
+    components: {
 
   },
   data () {
@@ -23,9 +23,10 @@ export default {
       type: String,
       default: ''
     },
-    type: {
-      type: String,
-      default: 'text'
+    data () {
+      return {
+        val: this.value
+      };
     },
     width: {
       type: String,
@@ -38,22 +39,23 @@ export default {
   },
   methods: {
 
-  },
-  computed: {
 
-  },
-  watch: {
-    value: function (newVal, oldVal) {
-      this.val = newVal
     },
-    val: function (newVal, oldVal) {
-      this.$emit('input', newVal)
-    }
-  },
-  mounted() {
+    computed: {
 
-  },
-}
+    },
+    watch: {
+      value: function (newVal, oldVal) {
+        this.val = newVal
+      },
+      val: function (newVal, oldVal) {
+        this.$emit('input', newVal)
+      }
+    },
+    mounted() {
+
+    },
+  }
 
 </script>
 <style lang='scss' scoped>
