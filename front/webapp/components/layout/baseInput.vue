@@ -1,8 +1,8 @@
 <!--  author:   Date:  -->
 <template>
   <div class="baseInput" :class="`baseInput_${mold}`" :style="{width: width}">
-    <span class="baseInput_placeholder" :class="{active: val}" v-if="mold === 'float'">{{placeholder}}</span>
-    <input class="baseInput_input" :type="type" v-model="val" :placeholder="mold === 'base' ? placeholder : ''">
+    <span class="baseInput_placeholder" :class="{active: isfocus || val}" v-if="mold === 'float'">{{placeholder}}</span>
+    <input class="baseInput_input" :type="type" v-model="val" @focus="foucsHandler" @blur="blurHandler" :placeholder="mold === 'base' ? placeholder : ''">
   </div>
 </template>
 
@@ -11,35 +11,40 @@
     name: "baseInput",
     components: {
 
-  },
-  data () {
-    return {
-      val: this.value
-    };
-  },
-  props: {
-    value: '',
-    placeholder: {
-      type: String,
-      default: ''
     },
     data () {
       return {
-        val: this.value
+        val: this.value,
+        isfocus: false,
       };
     },
-    width: {
-      type: String,
-      default: "100%"
-    },
-    mold: { //base,  float
-      type: String,
-      default: 'base'
-    },
-  },
-  methods: {
 
-
+    props: {
+      value: '',
+      placeholder: {
+        type: String,
+        default: ''
+      },
+      type: {
+        type: String,
+        default: 'text'
+      },
+      mold: { //base,  float
+        type: String,
+        default: 'base'
+      },
+      width: {
+        type: String,
+        default: '100%'
+      }
+    },
+    methods: {
+      foucsHandler() {
+        this.isfocus = true
+      },
+      blurHandler() {
+        this.isfocus = false
+      }
     },
     computed: {
 
@@ -74,7 +79,7 @@
       &.active {
         top: -.8rem;
         left: 0;
-        color: #666;
+        color: #DDD;
         font-size: .45rem;
       }
     }
