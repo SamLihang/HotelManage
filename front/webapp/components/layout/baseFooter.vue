@@ -1,6 +1,6 @@
 <!--  author:   Date:  -->
 <template>
-  <mt-tabbar v-model="selected">
+  <mt-tabbar v-model="selected" class="footer">
     <mt-tab-item id="menu">
       <img slot="icon" src="@/assets/image/boss.png">
       菜单
@@ -45,4 +45,7 @@ export default {
 
 </script>
 <style lang='scss' scoped>
+  .footer {
+    z-index: 99
+  }
 </style>

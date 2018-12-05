@@ -1,9 +1,9 @@
 <!--  author:   Date:  -->
 <template>
   <div class="number">
-    <button class="add"><img src="@/assets/icon/sub.svg" alt=""></button>
+    <button class="add" @click.stop="subCount"><img src="@/assets/icon/sub.svg" alt=""></button>
     <input class="number_inp" type="number" v-model="val">
-    <button class="sub"><img src="@/assets/icon/add.svg" alt=""></button>
+    <button class="sub" @click.stop="addCount"><img src="@/assets/icon/add.svg" alt=""></button>
   </div>
 </template>
 
@@ -23,10 +23,23 @@ export default {
       type: String,
       default: ''
     },
-    value: ''
+    value: '',
+    min: {
+      type: Number,
+      default: 0
+    },
+    max: {
+      type: Number,
+      default: Number.MAX_VALUE
+    }
   },
   methods: {
-
+    addCount() {
+      this.val++
+    },
+    subCount() {
+      this.val--
+    }
   },
   computed: {
 
@@ -36,7 +49,11 @@ export default {
       this.val = newVal
     },
     val: function (newVal, oldVal) {
-      this.$emit('input', newVal)
+      if(newVal < this.min || newVal > this.max) {
+        this.val = oldVal
+      } else {
+        this.$emit('input', newVal)
+      }
     }
   },
   mounted() {
@@ -55,9 +72,10 @@ export default {
     .add, .sub {
       width: .7rem;
       height: .7rem;
-      border: 1px solid;
+      border: 1px solid #d9d9d9;
       margin: .2rem;
       border-radius: 50%;
+      background: #ccc;
       img {
         width: 100%;
         height: 100%;
@@ -66,7 +84,7 @@ export default {
     .number_inp {
       width: 1rem;
       height: .5rem;
-      border: 1px solid;
+      border: 1px solid #d9d9d9;
       text-align: center;
     }
   }

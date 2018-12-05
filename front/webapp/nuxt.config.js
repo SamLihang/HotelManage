@@ -10,7 +10,7 @@ module.exports = {
     title: pkg.name,
     meta: [
       { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+      { name: 'viewport', content: 'width=device-width, initial-scale=1, maximum-scale=1,minimum-scale=1,user-scalable=no' },
       { hid: 'description', name: 'description', content: pkg.description }
     ],
     link: [
@@ -28,7 +28,8 @@ module.exports = {
   ** Global CSS
   */
   css: [
-    'mint-ui/lib/style.css'
+    'mint-ui/lib/style.css',
+    '@/assets/reset.css'
   ],
 
   /*
@@ -36,7 +37,8 @@ module.exports = {
   */
   plugins: [
     '@/plugins/mint-ui',
-    { src: '@/plugins/flexible', ssr: false }
+    { src: '@/plugins/fetch', ssr: true},
+    { src: '@/plugins/flexible', ssr: false },
   ],
 
   /*
