@@ -33,7 +33,7 @@ export default {
           setUser(res.data)
           this.$router.push('/menu')
         } else {
-          MessageBox('提示', '账户不存在～');
+          MessageBox('提示', '登陆失败～');
         }
       })
     }

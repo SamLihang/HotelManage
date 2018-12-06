@@ -10,10 +10,6 @@ const service = axios.create({
 
 service.interceptors.response.use(
   res => {
-    // if () {
-      // let path = router.history.current.fullPath
-      // return;
-    // }
     return res.data;
   },
   error => {

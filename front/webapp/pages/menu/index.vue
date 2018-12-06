@@ -236,8 +236,10 @@ export default {
   }
   .scroller {
     position: absolute;
+    padding-bottom: 1.5rem;
     top: 44px;
     left: 20%;
+    background: #dadada !important;
   }
   .cell_wrapper {
     background: #dadada;
