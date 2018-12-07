@@ -3,9 +3,9 @@ package model
 import (
 	"github.com/jinzhu/gorm"
 	_ "github.com/go-sql-driver/mysql"
-	"go_cms/config"
 	"fmt"
 	"go_cms/pkg/log"
+	"go_cms/pkg/setting"
 )
 
 var (
@@ -15,12 +15,12 @@ var (
 
 func NewDatabase() {
 	db, err = gorm.Open(
-		config.Database.Type,
+		setting.Database.Type,
 		fmt.Sprintf("%s:%s@/%s?charset=%s&parseTime=True&loc=Local",
-			config.Database.User,
-			config.Database.Password,
-			config.Database.Name,
-			config.Database.Charset,
+			setting.Database.User,
+			setting.Database.Password,
+			setting.Database.Name,
+			setting.Database.Charset,
 			),
 		)
 	if err != nil {
@@ -28,5 +28,6 @@ func NewDatabase() {
 	}
 	db.DB().SetMaxIdleConns(10)
 	db.DB().SetMaxOpenConns(100)
+	db.LogMode(false)
 	db.DB().Ping()
 }

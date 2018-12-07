@@ -1,18 +1,100 @@
-basePath: '{{.BasePath}}'
-host: '{{.Host}}'
+basePath: /api/v1
+definitions:
+  model.Role:
+    properties:
+      menu:
+        type: string
+      roleId:
+        type: integer
+      roleName:
+        type: string
+    type: object
+  model.User:
+    properties:
+      createdAt:
+        type: string
+      deletedAt:
+        type: string
+      password:
+        type: string
+      role:
+        $ref: '#/definitions/model.Role'
+        type: object
+      role_id:
+        type: integer
+      updatedAt:
+        type: string
+      user_id:
+        type: integer
+      username:
+        type: string
+    type: object
+host: localhost:8000
 info:
-  contact: {}
-  description: '{{.Description}}'
-  license: {}
-  title: '{{.Title}}'
-  version: '{{.Version}}'
+  contact:
+    email: SamLihang.com
+    name: Sam Li
+    url: https://github.com/SamLihang/HotelManage
+  description: This is a sample purchase vegetable server.
+  license:
+    name: MIT
+    url: https://github.com/SamLihang/HotelManage
+  termsOfService: http://swagger.io/terms/
+  title: Go CMS API
+  version: "1.0"
 paths:
-  /api/v1/login:
+  /user/login:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: username
+        in: query
+        name: username
+        required: true
+        type: string
+      - description: password
+        in: query
+        name: password
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: '{"code":0,"message":"OK","data":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjIwMmNiOTYyYWM1OTA3NWI5NjRiMDcxNTJkMjM0YjcwIiwicGFzc3dvcmQiOiI0NmY5NGM4ZGUxNGZiMzY2ODA4NTA3NjhmZjFiN2YyYSIsImV4cCI6MTU0MDYxMTU4MCwiaXNzIjoiZ29fY21zIn0.gzaHUStSEY8cnlfS1Gu_GScnNGDs6x1HZTpLgVT5aIw"}'
+          schema:
+            type: string
+      summary: 用户登陆
+      tags:
+      - User
+  /user/register:
     post:
       consumes:
       - application/json
-      description: 用户注册
+      parameters:
+      - description: username
+        in: body
+        name: username
+        required: true
+        schema:
+          $ref: '#/definitions/model.User'
+          type: object
+      - description: password
+        in: body
+        name: password
+        required: true
+        schema:
+          $ref: '#/definitions/model.User'
+          type: object
       produces:
       - application/json
+      responses:
+        "200":
+          description: '{"code":0,"msg":"OK"}'
+          schema:
+            type: string
       summary: 用户注册
+      tags:
+      - User
 swagger: "2.0"

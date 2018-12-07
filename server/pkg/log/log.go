@@ -4,11 +4,11 @@ import (
 	"log"
 	"os"
 	"time"
-	"go_cms/config"
-	"path"
+		"path"
 	"runtime"
 	"fmt"
 	"path/filepath"
+	"go_cms/pkg/setting"
 )
 
 type level int
@@ -31,13 +31,13 @@ var (
 func NewLog() {
 	var err error
 	fileName := time.Now().Format("20060102") + ".log"
-	if _, err = os.Stat(config.App.LogPath); err != nil {
-		err = os.MkdirAll(config.App.LogPath, 0666)
+	if _, err = os.Stat(setting.App.LogPath); err != nil {
+		err = os.MkdirAll(setting.App.LogPath, 0666)
 		if err != nil {
 			log.Fatalf("Error: create log path failed. %s", err)
 		}
 	}
-	F, err = os.OpenFile(path.Join(config.App.LogPath, fileName), os.O_CREATE|os.O_WRONLY|os.O_APPEND, 0666)
+	F, err = os.OpenFile(path.Join(setting.App.LogPath, fileName), os.O_CREATE|os.O_WRONLY|os.O_APPEND, 0666)
 	if err != nil {
 		log.Fatalf("Error: open log file failed. %s", err)
 	}

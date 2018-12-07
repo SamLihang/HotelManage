@@ -5,27 +5,25 @@ import (
 	"time"
 	"crypto/md5"
 	"encoding/hex"
-	"go_cms/config"
+		"go_cms/pkg/setting"
 )
 
-var secret = []byte(config.App.Secret)
+var secret = []byte(setting.App.Secret)
 
 type Claims struct {
+	Id int `json:"id"`
 	Username string `json:"username"`
-	Password string `json:"password"`
 	jwt.StandardClaims
 }
 
-func GenerateToken(username, password string) (string, error) {
-	expire := time.Now().Add(3 * time.Hour)
+func GenerateToken(id int, username string) (string, error) {
+	expire := time.Now().AddDate(0, 0, 1)
 	m := md5.New()
 	m.Write([]byte(username))
 	username = hex.EncodeToString(m.Sum(nil))
-	m.Write([]byte(password))
-	password = hex.EncodeToString(m.Sum(nil))
 	claims := Claims{
+		Id:id,
 		Username:username,
-		Password:password,
 		StandardClaims:jwt.StandardClaims{
 			ExpiresAt:expire.Unix(),
 			Issuer:"go_cms",

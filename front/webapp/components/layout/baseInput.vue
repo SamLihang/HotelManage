@@ -14,7 +14,7 @@
     },
     data () {
       return {
-        val: this.value
+        val: this.value,
       };
     },
 
