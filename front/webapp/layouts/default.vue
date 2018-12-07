@@ -43,12 +43,19 @@ body {
   height: 100%;
 }
 .mint-tabbar > .mint-tab-item.is-selected {
-  color: #6194bb !important
+  color: var(--color_main) !important
 }
 .mint-searchbar-cancel {
   color: #fff;
 }
 .mint-header, .mint-button--primary {
   background-color: #6194bb !important
+}
+:root {
+  --color_main: #6194BB;
+  --color_secd: #5A768C;
+  --color_thir: #20527A;
+  --color_four: #8DBADD;
+  --color_five: #A3C4DD;
 }
 </style>

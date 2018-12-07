@@ -1,8 +1,8 @@
 <!--  author:   Date:  -->
 <template>
-  <div class="baseInput" :class="`baseInput_${mold}`" :style="{width:inputWidth}">
-    <span class="baseInput_placeholder" :class="{active: val}" v-if="mold === 'float'">{{placeholder}}</span>
-    <input class="baseInput_input" :type="type" v-model="val" :placeholder="mold === 'base' ? placeholder : ''">
+  <div class="baseInput" :class="`baseInput_${mold}`" :style="{width: width}">
+    <span class="baseInput_placeholder" :class="{active: isfocus || val}" v-if="mold === 'float'">{{placeholder}}</span>
+    <input class="baseInput_input" :type="type" v-model="val" @focus="foucsHandler" @blur="blurHandler" :placeholder="mold === 'base' ? placeholder : ''">
   </div>
 </template>
 
@@ -15,6 +15,7 @@
     data () {
       return {
         val: this.value,
+        isfocus: false,
       };
     },
 
@@ -32,14 +33,18 @@
         type: String,
         default: 'base'
       },
-      inputWidth: {
+      width: {
         type: String,
         default: '100%'
       }
     },
     methods: {
-
-
+      foucsHandler() {
+        this.isfocus = true
+      },
+      blurHandler() {
+        this.isfocus = false
+      }
     },
     computed: {
 
@@ -60,7 +65,6 @@
 </script>
 <style lang='scss' scoped>
   .baseInput {
-    width: 100%;
     height: .8rem;
     position: relative;
     .baseInput_placeholder {
@@ -70,12 +74,12 @@
       z-index: 1;
       font-size: .4rem;
       color: #999;
-      line-height: .8rem;
+      line-height: .8rem; 
       transition: all ease-in-out .2s;
       &.active {
         top: -.8rem;
         left: 0;
-        color: #666;
+        color: #DDD;
         font-size: .45rem;
       }
     }
@@ -85,9 +89,10 @@
       left: 0;
       width: 100%;
       height: 100%;
-      border: none;
+      border: 1px solid #d9d9d9;
       border-radius: 4px;
       text-indent: .2rem;
+      background: #fff;
     }
     &.baseInput_float {
       margin-top: .8rem;

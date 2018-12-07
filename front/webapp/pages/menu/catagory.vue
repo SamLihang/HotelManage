@@ -22,17 +22,19 @@
 import { mapState } from 'vuex'
 import baseScroll from '@/components/layout/baseScroll'
 export default {
-   asyncData ({ parmas }) {
-    return { 
-      dataSource: {
-        name: '蔬菜类',
-        catagoryItem: ['青菜1', '青菜2', '青菜3', '青菜4', '青菜5', '青菜6', '青菜7', '青菜8']
-      }
-    }
+  async asyncData ({ app }) {
+      // dataSource: {
+      //   name: '蔬菜类',
+      //   catagoryItem: ['青菜1', '青菜2', '青菜3', '青菜4', '青菜5', '青菜6', '青菜7', '青菜8']
+      // }
   },
   data () {
     return {
-      data: []
+      dataSource: {
+        name: '蔬菜类',
+        catagoryItem: ['青菜1', '青菜2', '青菜3', '青菜4', '青菜5', '青菜6', '青菜7', '青菜8']
+      },
+      data: [],
     }
   },
   components: {
@@ -65,6 +67,9 @@ export default {
     }
   },
   mounted() {
+    this.$fetch(`/vegetable/${2}`).then(res => {
+      
+    })
   }
 }
 </script>

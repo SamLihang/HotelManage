@@ -2,22 +2,24 @@
   <div class="wrapper">
     <img class="headimg" src="@/assets/image/employee.png" alt="">
     <div class="login">
-      <base-input type="text" placeholder="账号" mold="float" v-model="account"></base-input>
-      <base-input type="text" placeholder="密码" mold="float" v-model="password"></base-input>
+      <base-input type="text" placeholder="账号" mold="float" v-model="username"></base-input>
+      <base-input type="password" placeholder="密码" mold="float" v-model="password"></base-input>
     </div>
-    <nuxt-link to="/menu">
-      <mt-button type="primary" size="normal" class="loginBtn">登陆</mt-button>
-    </nuxt-link>
+    <!-- <nuxt-link to="/menu"> -->
+      <mt-button @click.stop.native="login" type="primary" size="normal" class="loginBtn">登陆</mt-button>
+    <!-- </nuxt-link> -->
   </div>
 </template>
 
 <script>
+import { setUser } from '@/utils/auth'
+import { MessageBox } from 'mint-ui';
 import baseInput from '@/components/layout/baseInput'
 export default {
   layout: 'login',
   data () {
     return {
-      account: '',
+      username: '',
       password: '',
     }
   },
@@ -25,6 +27,18 @@ export default {
     baseInput
   },
   methods: {
+    login() {
+      this.$fetch('/user/login',{username: this.username, password: this.password}).then(res => {
+        if(res.data) {
+          setUser(res.data)
+          this.$router.push('/menu')
+        } else {
+          MessageBox('提示', '登陆失败～');
+        }
+      })
+    }
+  },
+  mounted() {
   }
 }
 </script>

@@ -1,5 +1,5 @@
 <template>
-  <div class="bscroll" :style="{height:`${height}px`,background:bg}" ref="scrollContent">
+  <div class="bscroll" :style="{height:`${height}px`, width:`${width}`,background:bg}" ref="scrollContent">
     <mt-loadmore class="loadmore" @top-status-change="handleTopChange" @bottom-status-change="handleBottomChange"
     :top-method="loadTop" :bottom-method="loadBottom" :bottom-all-loaded="allLoaded" :maxDistance="maxDistance"
     :topDistance="topDistance" :bottomDistance="bottomDistance" :distanceIndex="distanceIndex" ref="loadmore">
@@ -41,6 +41,10 @@ export default {
     }
   },
   props: {
+      width: {
+        type: String,
+        default: '100%'
+      },
       height: {
         type: Number,
         default: 1000,
