@@ -4,14 +4,14 @@
     <mt-search v-model="searchKey" class="searchbar"></mt-search>
     <div class="menu">
       <base-scroll :height="scrollHeight - 100">
-        <mt-cell class="menu_item" @click.native="chooseHandler(index)" :class="{active: index===catagoryIndex}" :title="menu.category_name" v-for="(menu,index) in dataSource" :key="index"></mt-cell>
+        <mt-cell class="menu_item" @click.native="chooseHandler(index)" :class="{active: index===categoryIndex}" :title="menu.category_name" v-for="(menu,index) in categoryList" :key="index"></mt-cell>
       </base-scroll>
       <mt-cell title="新增" class="menu_item edit" @click.native="addHandler"></mt-cell>
       <mt-cell title="修改" class="menu_item edit" @click.native="editHandler"></mt-cell>
     </div>
     <base-scroll class="scroller" width="80%" :height="scrollHeight" :startScroll="scrollTop" @loadTop="loadTop" @loadBottom="loadBottom" ref="scroll">
       <div class="cell_wrapper" v-if="dataSource[0]">
-        <div class="cell_content" v-for="(item,index) in dataSource[catagoryIndex].categoryItem" :key="index">
+        <div class="cell_content" v-for="(item,index) in categoryItem" :key="index">
           <div class="cell_image"><img src="@/assets/image/green.jpg"></div>
           <div class="cell_msg">
             <h5 class="cell_name">菜名：{{item.name}}</h5>
@@ -51,49 +51,49 @@ export default {
   asyncData ({ parmas }) {
     return { 
       dataSource: [
-        {
-        category_name: '蔬菜类',
-        category_id: 2,
-        categoryItem: [
-            { name: '青菜', unit: "斤", num: 1, remark: "sssafdfa" },
-            { name: '青菜', unit: "斤", num: 1, remark: "sssafdfa" },
-            { name: '青菜', unit: "斤", num: 1, remark: "sssafdfa" },
-            { name: '青菜', unit: "斤", num: 1, remark: "sssafdfa" },
-            { name: '青菜', unit: "斤", num: 1, remark: "sssafdfa" },
-            { name: '青菜', unit: "斤", num: 1, remark: "sssafdfa" },
-            { name: '青菜', unit: "斤", num: 1, remark: "sssafdfa" },
-            { name: '青菜', unit: "斤", num: 1, remark: "sssafdfa" },
-            { name: '青菜', unit: "斤", num: 1, remark: "sssafdfa" },
-            { name: '青菜', unit: "斤", num: 1, remark: "sssafdfa" },
-            { name: '青菜', unit: "斤", num: 1, remark: "sssafdfa" },
-            { name: '青菜', unit: "斤", num: 1, remark: "sssafdfa" },
-            { name: '青菜', unit: "斤", num: 1, remark: "sssafdfa" },
-            { name: '青菜', unit: "斤", num: 1, remark: "sssafdfa" },
-            { name: '青菜', unit: "斤", num: 1, remark: "sssafdfa" },
-        ]
-        },
-        {
-        category_name: '肉类',
-        category_id: 3,
-        categoryItem: [
-            { name: '猪肉' , unit: "斤", num: 1, remark: "adfasdfafa"},
-            { name: '猪肉' , unit: "斤", num: 1, remark: "adfasdfafa"},
-            { name: '猪肉' , unit: "斤", num: 1, remark: "adfasdfafa"},
-            { name: '猪肉' , unit: "斤", num: 1, remark: "adfasdfafa"},
-            { name: '猪肉' , unit: "斤", num: 1, remark: "adfasdfafa"},
-            { name: '猪肉' , unit: "斤", num: 1, remark: "adfasdfafa"},
-            { name: '猪肉' , unit: "斤", num: 1, remark: "adfasdfafa"},
-            { name: '猪肉' , unit: "斤", num: 1, remark: "adfasdfafa"},
-            { name: '猪肉' , unit: "斤", num: 1, remark: "adfasdfafa"},
-            { name: '猪肉' , unit: "斤", num: 1, remark: "adfasdfafa"},
-            { name: '猪肉' , unit: "斤", num: 1, remark: "adfasdfafa"},
-            { name: '猪肉' , unit: "斤", num: 1, remark: "adfasdfafa"},
-            { name: '猪肉' , unit: "斤", num: 1, remark: "adfasdfafa"},
-            { name: '猪肉' , unit: "斤", num: 1, remark: "adfasdfafa"},
-            { name: '猪肉' , unit: "斤", num: 1, remark: "adfasdfafa"},
-        ]
-        }
-    ],
+        // {
+        // category_name: '蔬菜类',
+        // category_id: 5,
+        // categoryItem: [
+        //     { name: '青菜', unit: "斤", num: 1, remark: "sssafdfa" },
+        //     { name: '青菜', unit: "斤", num: 1, remark: "sssafdfa" },
+        //     { name: '青菜', unit: "斤", num: 1, remark: "sssafdfa" },
+        //     { name: '青菜', unit: "斤", num: 1, remark: "sssafdfa" },
+        //     { name: '青菜', unit: "斤", num: 1, remark: "sssafdfa" },
+        //     { name: '青菜', unit: "斤", num: 1, remark: "sssafdfa" },
+        //     { name: '青菜', unit: "斤", num: 1, remark: "sssafdfa" },
+        //     { name: '青菜', unit: "斤", num: 1, remark: "sssafdfa" },
+        //     { name: '青菜', unit: "斤", num: 1, remark: "sssafdfa" },
+        //     { name: '青菜', unit: "斤", num: 1, remark: "sssafdfa" },
+        //     { name: '青菜', unit: "斤", num: 1, remark: "sssafdfa" },
+        //     { name: '青菜', unit: "斤", num: 1, remark: "sssafdfa" },
+        //     { name: '青菜', unit: "斤", num: 1, remark: "sssafdfa" },
+        //     { name: '青菜', unit: "斤", num: 1, remark: "sssafdfa" },
+        //     { name: '青菜', unit: "斤", num: 1, remark: "sssafdfa" },
+        // ]
+        // },
+        // {
+        // category_name: '肉类',
+        // category_id: 1,
+        // categoryItem: [
+        //     { name: '猪肉' , unit: "斤", num: 1, remark: "adfasdfafa"},
+        //     { name: '猪肉' , unit: "斤", num: 1, remark: "adfasdfafa"},
+        //     { name: '猪肉' , unit: "斤", num: 1, remark: "adfasdfafa"},
+        //     { name: '猪肉' , unit: "斤", num: 1, remark: "adfasdfafa"},
+        //     { name: '猪肉' , unit: "斤", num: 1, remark: "adfasdfafa"},
+        //     { name: '猪肉' , unit: "斤", num: 1, remark: "adfasdfafa"},
+        //     { name: '猪肉' , unit: "斤", num: 1, remark: "adfasdfafa"},
+        //     { name: '猪肉' , unit: "斤", num: 1, remark: "adfasdfafa"},
+        //     { name: '猪肉' , unit: "斤", num: 1, remark: "adfasdfafa"},
+        //     { name: '猪肉' , unit: "斤", num: 1, remark: "adfasdfafa"},
+        //     { name: '猪肉' , unit: "斤", num: 1, remark: "adfasdfafa"},
+        //     { name: '猪肉' , unit: "斤", num: 1, remark: "adfasdfafa"},
+        //     { name: '猪肉' , unit: "斤", num: 1, remark: "adfasdfafa"},
+        //     { name: '猪肉' , unit: "斤", num: 1, remark: "adfasdfafa"},
+        //     { name: '猪肉' , unit: "斤", num: 1, remark: "adfasdfafa"},
+        // ]
+        // }
+      ],
     }
   },
   components: {
@@ -109,14 +109,14 @@ export default {
       searchKey: '',
       scrollTop: 0,
       editData: {},
-      catagoryIndex: 0,
+      categoryIndex: 0,
       popupVisible: false,
       categoryList: [
-        {name: "蔬菜类"},
-        {name: "肉类"},
-        {name: "水产"},
-        {name: "冻品"},
-        {name: "干货"}
+        // {name: "蔬菜类"},
+        // {name: "肉类"},
+        // {name: "水产"},
+        // {name: "冻品"},
+        // {name: "干货"}
       ],
     };
   },
@@ -156,10 +156,10 @@ export default {
       this.$refs.palette.collapse()
     },
     chooseHandler(index) {
-      this.catagoryIndex = index
+      this.categoryIndex = index
     },
     editHandler() {
-      this.$router.push({path: 'menu/catagory', query: {name: this.dataSource[this.catagoryIndex].name || ""}})
+      this.$router.push({path: 'menu/category', query: this.categoryList[this.categoryIndex]})
     },
     loadTop() {
       setTimeout(() => {
@@ -179,11 +179,10 @@ export default {
     },
     initdata() {
       this.$fetch('/menus').then(res => {
-        this.$store.commit('setMenu', this.dataSource)
-        // this.dataSource = JSON.parse(res.data.menu)
+        this.dataSource = JSON.parse(res.data.menu)
       })
       this.$fetch('/category').then(res => {
-        console.log(res)
+        this.categoryList = res.data
       })
     }
   },
@@ -191,6 +190,14 @@ export default {
     ...mapState({
       height: store => {return store.height}
     }),
+    categoryItem() {
+      if(!this.categoryList.length) return []
+      let _categoryId = this.categoryList[this.categoryIndex].category_id
+      let _categoryItemList = this.dataSource.filter(e => {
+        return e.category_id === _categoryId
+        })[0]
+      return _categoryItemList ? _categoryItemList.categoryItem : []
+    },
     scrollHeight() {
       return this.height - 44 - 55
     } 
