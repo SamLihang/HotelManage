@@ -14,7 +14,7 @@
         <div class="cell_content" v-for="(item,index) in categoryItem" :key="index">
           <div class="cell_image"><img src="@/assets/image/green.jpg"></div>
           <div class="cell_msg">
-            <h5 class="cell_name">菜名：{{item.name}}</h5>
+            <h5 class="cell_name">菜名：{{item.vegetable_name}}</h5>
             <p class="cell_unit">单位: {{item.unit}}</p>
             <number v-model="item.num"></number>
           </div>
@@ -34,7 +34,7 @@
       v-model="popupVisible"
       class="popup" position="bottom">
       <base-scroll class="popup_scroll">
-        <mt-cell v-for="(category,index) in categoryList" :key="index" @click.stop.native="addCategory" :title="category.name" />
+        <mt-cell v-for="(category,index) in categoryList" :key="index" @click.stop.native="addCategory" :title="category.category_name" />
       </base-scroll>
     </mt-popup>
   </div>
@@ -51,48 +51,49 @@ export default {
   asyncData ({ parmas }) {
     return { 
       dataSource: [
-        // {
-        // category_name: '蔬菜类',
-        // category_id: 5,
-        // categoryItem: [
-        //     { name: '青菜', unit: "斤", num: 1, remark: "sssafdfa" },
-        //     { name: '青菜', unit: "斤", num: 1, remark: "sssafdfa" },
-        //     { name: '青菜', unit: "斤", num: 1, remark: "sssafdfa" },
-        //     { name: '青菜', unit: "斤", num: 1, remark: "sssafdfa" },
-        //     { name: '青菜', unit: "斤", num: 1, remark: "sssafdfa" },
-        //     { name: '青菜', unit: "斤", num: 1, remark: "sssafdfa" },
-        //     { name: '青菜', unit: "斤", num: 1, remark: "sssafdfa" },
-        //     { name: '青菜', unit: "斤", num: 1, remark: "sssafdfa" },
-        //     { name: '青菜', unit: "斤", num: 1, remark: "sssafdfa" },
-        //     { name: '青菜', unit: "斤", num: 1, remark: "sssafdfa" },
-        //     { name: '青菜', unit: "斤", num: 1, remark: "sssafdfa" },
-        //     { name: '青菜', unit: "斤", num: 1, remark: "sssafdfa" },
-        //     { name: '青菜', unit: "斤", num: 1, remark: "sssafdfa" },
-        //     { name: '青菜', unit: "斤", num: 1, remark: "sssafdfa" },
-        //     { name: '青菜', unit: "斤", num: 1, remark: "sssafdfa" },
-        // ]
-        // },
-        // {
-        // category_name: '肉类',
-        // category_id: 1,
-        // categoryItem: [
-        //     { name: '猪肉' , unit: "斤", num: 1, remark: "adfasdfafa"},
-        //     { name: '猪肉' , unit: "斤", num: 1, remark: "adfasdfafa"},
-        //     { name: '猪肉' , unit: "斤", num: 1, remark: "adfasdfafa"},
-        //     { name: '猪肉' , unit: "斤", num: 1, remark: "adfasdfafa"},
-        //     { name: '猪肉' , unit: "斤", num: 1, remark: "adfasdfafa"},
-        //     { name: '猪肉' , unit: "斤", num: 1, remark: "adfasdfafa"},
-        //     { name: '猪肉' , unit: "斤", num: 1, remark: "adfasdfafa"},
-        //     { name: '猪肉' , unit: "斤", num: 1, remark: "adfasdfafa"},
-        //     { name: '猪肉' , unit: "斤", num: 1, remark: "adfasdfafa"},
-        //     { name: '猪肉' , unit: "斤", num: 1, remark: "adfasdfafa"},
-        //     { name: '猪肉' , unit: "斤", num: 1, remark: "adfasdfafa"},
-        //     { name: '猪肉' , unit: "斤", num: 1, remark: "adfasdfafa"},
-        //     { name: '猪肉' , unit: "斤", num: 1, remark: "adfasdfafa"},
-        //     { name: '猪肉' , unit: "斤", num: 1, remark: "adfasdfafa"},
-        //     { name: '猪肉' , unit: "斤", num: 1, remark: "adfasdfafa"},
-        // ]
-        // }
+        {
+        category_name: '蔬菜类',
+        category_id: 5,
+        categoryItem: [
+          {vegetable_id: 103, vegetable_name: "香菇", unit: "斤", user_id: 0, category_id: 5, category_name: "蔬菜类", CreatedAt: "0001-01-01T00:00:00Z", UpdatedAt: "0001-01-01T00:00:00Z", num: 1, remark: ""},
+          {vegetable_id: 104, vegetable_name: "白玉菇", unit: "斤", user_id: 0, category_id: 5, category_name: "蔬菜类", CreatedAt: "0001-01-01T00:00:00Z", UpdatedAt: "0001-01-01T00:00:00Z", num: 1, remark: ""},
+          {vegetable_id: 105, vegetable_name: "海鲜菇", unit: "斤", user_id: 0, category_id: 5, category_name: "蔬菜类", CreatedAt: "0001-01-01T00:00:00Z", UpdatedAt: "0001-01-01T00:00:00Z", num: 1, remark: ""},
+          {vegetable_id: 106, vegetable_name: "白蘑菇", unit: "斤", user_id: 0, category_id: 5, category_name: "蔬菜类", CreatedAt: "0001-01-01T00:00:00Z", UpdatedAt: "0001-01-01T00:00:00Z", num: 1, remark: ""},
+          {vegetable_id: 107, vegetable_name: "上海青", unit: "斤", user_id: 0, category_id: 5, category_name: "蔬菜类", CreatedAt: "0001-01-01T00:00:00Z", UpdatedAt: "0001-01-01T00:00:00Z", num: 1, remark: ""},
+          {vegetable_id: 108, vegetable_name: "广东菜心", unit: "斤", user_id: 0, category_id: 5, category_name: "蔬菜类", CreatedAt: "0001-01-01T00:00:00Z", UpdatedAt: "0001-01-01T00:00:00Z", num: 1, remark: ""},
+          {vegetable_id: 109, vegetable_name: "黄豆芽", unit: "斤", user_id: 0, category_id: 5, category_name: "蔬菜类", CreatedAt: "0001-01-01T00:00:00Z", UpdatedAt: "0001-01-01T00:00:00Z", num: 1, remark: ""},
+          {vegetable_id: 110, vegetable_name: "腐竹", unit: "斤", user_id: 0, category_id: 5, category_name: "蔬菜类", CreatedAt: "0001-01-01T00:00:00Z", UpdatedAt: "0001-01-01T00:00:00Z", num: 1, remark: ""},
+          {vegetable_id: 111, vegetable_name: "鲜茶树菇", unit: "斤", user_id: 0, category_id: 5, category_name: "蔬菜类", CreatedAt: "0001-01-01T00:00:00Z", UpdatedAt: "0001-01-01T00:00:00Z", num: 1, remark: ""},
+          {vegetable_id: 112, vegetable_name: "干茶树菇", unit: "斤", user_id: 0, category_id: 5, category_name: "蔬菜类", CreatedAt: "0001-01-01T00:00:00Z", UpdatedAt: "0001-01-01T00:00:00Z", num: 1, remark: ""},
+          {vegetable_id: 113, vegetable_name: "香干", unit: "斤", user_id: 0, category_id: 5, category_name: "蔬菜类", CreatedAt: "0001-01-01T00:00:00Z", UpdatedAt: "0001-01-01T00:00:00Z", num: 1, remark: ""},
+          {vegetable_id: 114, vegetable_name: "千张", unit: "斤", user_id: 0, category_id: 5, category_name: "蔬菜类", CreatedAt: "0001-01-01T00:00:00Z", UpdatedAt: "0001-01-01T00:00:00Z", num: 1, remark: ""},
+          {vegetable_id: 115, vegetable_name: "盒豆腐", unit: "斤", user_id: 0, category_id: 5, category_name: "蔬菜类", CreatedAt: "0001-01-01T00:00:00Z", UpdatedAt: "0001-01-01T00:00:00Z", num: 1, remark: ""},
+          {vegetable_id: 116, vegetable_name: "茶干", unit: "斤", user_id: 0, category_id: 5, category_name: "蔬菜类", CreatedAt: "0001-01-01T00:00:00Z", UpdatedAt: "0001-01-01T00:00:00Z", num: 1, remark: ""},
+          {vegetable_id: 117, vegetable_name: "榨菜", unit: "斤", user_id: 0, category_id: 5, category_name: "蔬菜类", CreatedAt: "0001-01-01T00:00:00Z", UpdatedAt: "0001-01-01T00:00:00Z", num: 1, remark: ""},
+          {vegetable_id: 118, vegetable_name: "韭黄", unit: "斤", user_id: 0, category_id: 5, category_name: "蔬菜类", CreatedAt: "0001-01-01T00:00:00Z", UpdatedAt: "0001-01-01T00:00:00Z", num: 1, remark: ""},
+          {vegetable_id: 119, vegetable_name: "韭菜", unit: "斤", user_id: 0, category_id: 5, category_name: "蔬菜类", CreatedAt: "0001-01-01T00:00:00Z", UpdatedAt: "0001-01-01T00:00:00Z", num: 1, remark: ""},
+          {vegetable_id: 120, vegetable_name: "韭菜花", unit: "斤", user_id: 0, category_id: 5, category_name: "蔬菜类", CreatedAt: "0001-01-01T00:00:00Z", UpdatedAt: "0001-01-01T00:00:00Z", num: 1, remark: ""},
+          {vegetable_id: 121, vegetable_name: "藕", unit: "斤", user_id: 0, category_id: 5, category_name: "蔬菜类", CreatedAt: "0001-01-01T00:00:00Z", UpdatedAt: "0001-01-01T00:00:00Z", num: 1, remark: ""},
+          {vegetable_id: 122, vegetable_name: "小葱", unit: "斤", user_id: 0, category_id: 5, category_name: "蔬菜类", CreatedAt: "0001-01-01T00:00:00Z", UpdatedAt: "0001-01-01T00:00:00Z", num: 1, remark: ""},
+          {vegetable_id: 123, vegetable_name: "青大蒜", unit: "斤", user_id: 0, category_id: 5, category_name: "蔬菜类", CreatedAt: "0001-01-01T00:00:00Z", UpdatedAt: "0001-01-01T00:00:00Z", num: 1, remark: ""},
+        ]
+        },
+        {
+        category_name: '肉类',
+        category_id: 1,
+        categoryItem: [
+          {vegetable_id: 1, vegetable_name: "五花肉", unit: "斤", user_id: 0, category_id: 1, category_name: "肉类", CreatedAt: "0001-01-01T00:00:00Z", UpdatedAt: "0001-01-01T00:00:00Z", num: 1, remark: ""},
+          {vegetable_id: 2, vegetable_name: "五花肉丝", unit: "斤", user_id: 0, category_id: 1, category_name: "肉类", CreatedAt: "0001-01-01T00:00:00Z", UpdatedAt: "0001-01-01T00:00:00Z", num: 1, remark: ""},
+          {vegetable_id: 3, vegetable_name: "全精肉", unit: "斤", user_id: 0, category_id: 1, category_name: "肉类", CreatedAt: "0001-01-01T00:00:00Z", UpdatedAt: "0001-01-01T00:00:00Z", num: 1, remark: ""},
+          {vegetable_id: 6, vegetable_name: "肉末", unit: "斤", user_id: 0, category_id: 1, category_name: "肉类", CreatedAt: "0001-01-01T00:00:00Z", UpdatedAt: "0001-01-01T00:00:00Z", num: 1, remark: ""},
+          {vegetable_id: 7, vegetable_name: "猪肝", unit: "斤", user_id: 0, category_id: 1, category_name: "肉类", CreatedAt: "0001-01-01T00:00:00Z", UpdatedAt: "0001-01-01T00:00:00Z", num: 1, remark: ""},
+          {vegetable_id: 8, vegetable_name: "猪脚", unit: "斤", user_id: 0, category_id: 1, category_name: "肉类", CreatedAt: "0001-01-01T00:00:00Z", UpdatedAt: "0001-01-01T00:00:00Z", num: 1, remark: ""},
+          {vegetable_id: 9, vegetable_name: "猪肚", unit: "斤", user_id: 0, category_id: 1, category_name: "肉类", CreatedAt: "0001-01-01T00:00:00Z", UpdatedAt: "0001-01-01T00:00:00Z", num: 1, remark: ""},
+          {vegetable_id: 10, vegetable_name: "猪腰", unit: "斤", user_id: 0, category_id: 1, category_name: "肉类", CreatedAt: "0001-01-01T00:00:00Z", UpdatedAt: "0001-01-01T00:00:00Z", num: 1, remark: ""},
+          {vegetable_id: 11, vegetable_name: "猪大肠", unit: "斤", user_id: 0, category_id: 1, category_name: "肉类", CreatedAt: "0001-01-01T00:00:00Z", UpdatedAt: "0001-01-01T00:00:00Z", num: 1, remark: ""},
+          {vegetable_id: 12, vegetable_name: "腊肉", unit: "斤", user_id: 0, category_id: 1, category_name: "肉类", CreatedAt: "0001-01-01T00:00:00Z", UpdatedAt: "0001-01-01T00:00:00Z", num: 1, remark: ""},
+        ]
+        }
       ],
     }
   },
@@ -112,11 +113,11 @@ export default {
       categoryIndex: 0,
       popupVisible: false,
       categoryList: [
-        // {name: "蔬菜类"},
-        // {name: "肉类"},
-        // {name: "水产"},
-        // {name: "冻品"},
-        // {name: "干货"}
+        // {category_name: "蔬菜类"},
+        // {category_name: "肉类"},
+        // {category_name: "水产"},
+        // {category_name: "冻品"},
+        // {category_name: "干货"}
       ],
     };
   },
@@ -178,9 +179,10 @@ export default {
       console.log('load more')
     },
     initdata() {
-      this.$fetch('/menus').then(res => {
-        this.dataSource = JSON.parse(res.data.menu)
-      })
+      // this.$fetch('/menus').then(res => {
+      //   this.dataSource = JSON.parse(res.data.menu)
+      //   this.$store.commit('setMenu', res.data.menu)
+      // })
       this.$fetch('/category').then(res => {
         this.categoryList = res.data
       })

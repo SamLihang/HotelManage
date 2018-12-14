@@ -1,19 +1,19 @@
 <!--  author:   Date:  -->
 <template>
   <div>
-    <mt-header fixed title="模版一">
+    <mt-header fixed :title="dataSource.template_name">
       <mt-button @click.native.stop="$router.go(-1)" icon="back" slot="left">返回</mt-button>
     </mt-header>
     <div class="menu">
       <base-scroll :height="scrollHeight - 96">
-        <mt-cell class="menu_item" @click.native="chooseHandler(index)" :class="{active: index===catagoryIndex}" :title="menu.name" v-for="(menu,index) in dataSource" :key="index"></mt-cell>
+        <mt-cell class="menu_item" @click.native="chooseHandler(index)" :class="{active: index===categoryIndex}" :title="category.category_name" v-for="(category,index) in categoryList" :key="index"></mt-cell>
       </base-scroll>
-      <mt-cell title="新增" class="menu_item edit" @click.native="addHandler"></mt-cell>
+      <mt-cell title="保存" class="menu_item edit" @click.native="saveHandler"></mt-cell>
       <mt-cell title="修改" class="menu_item edit" @click.native="editHandler"></mt-cell>
     </div>
     <base-scroll class="scroller" width="80%" :height="scrollHeight" :startScroll="scrollTop" @loadTop="loadTop" @loadBottom="loadBottom" ref="scroll">
       <div class="cell_wrapper" v-if="dataSource[0]">
-        <div class="cell_content" v-for="(item,index) in dataSource[catagoryIndex].catagoryItem" :key="index">
+        <div class="cell_content" v-for="(item,index) in dataSource[categoryIndex].categoryItem" :key="index">
           <div class="cell_image"><img src="@/assets/image/green.jpg"></div>
           <div class="cell_msg">
             <h5 class="cell_name">菜名：{{item.name}}</h5>
@@ -23,13 +23,13 @@
         </div>
       </div>
     </base-scroll>
-    <mt-popup
+    <!-- <mt-popup
       v-model="popupVisible"
       class="popup" position="bottom">
       <base-scroll class="popup_scroll">
-        <mt-cell v-for="(category,index) in categoryList" :key="index" @click.stop.native="addCategory" :title="category.name" />
+        <mt-cell v-for="(category,index) in categoryList" :key="index" @click.stop.native="addCategory" :title="category.category_name" />
       </base-scroll>
-    </mt-popup>
+    </mt-popup> -->
   </div>
 </template>
 
@@ -43,51 +43,44 @@ export default {
   name: "",
   asyncData ({ parmas }) {
     return { 
-      categoryList: [
-        {name: "蔬菜类"},
-        {name: "肉类"},
-        {name: "水产"},
-        {name: "冻品"},
-        {name: "干货"}
-      ],
-      dataSource: [
-        {
-          name: '蔬菜类',
-          catagory_id: 112, 
-          catagoryItem: [
-            { name: '青菜', num: 1, remark: "sssafdfa" },
-            { name: '青菜', num: 1, remark: "sssafdfa" },
-            { name: '青菜', num: 1, remark: "sssafdfa" },
-            { name: '青菜', num: 1, remark: "sssafdfa" },
-            { name: '青菜', num: 1, remark: "sssafdfa" },
-            { name: '青菜', num: 1, remark: "sssafdfa" },
-            { name: '青菜', num: 1, remark: "sssafdfa" },
-            { name: '青菜', num: 1, remark: "sssafdfa" },
-            { name: '青菜', num: 1, remark: "sssafdfa" },
-            { name: '青菜', num: 1, remark: "sssafdfa" },
-            { name: '青菜', num: 1, remark: "sssafdfa" },
-            { name: '青菜', num: 1, remark: "sssafdfa" },
-          ]
-        },
-         {
-          name: '肉类',
-          catagoryItem: [
-            { name: '猪肉' ,num: 1, remark: "adfasdfafa"},
-            { name: '猪肉' ,num: 1, remark: "adfasdfafa"},
-            { name: '猪肉' ,num: 1, remark: "adfasdfafa"},
-            { name: '猪肉' ,num: 1, remark: "adfasdfafa"},
-            { name: '猪肉' ,num: 1, remark: "adfasdfafa"},
-            { name: '猪肉' ,num: 1, remark: "adfasdfafa"},
-            { name: '猪肉' ,num: 1, remark: "adfasdfafa"},
-            { name: '猪肉' ,num: 1, remark: "adfasdfafa"},
-            { name: '猪肉' ,num: 1, remark: "adfasdfafa"},
-            { name: '猪肉' ,num: 1, remark: "adfasdfafa"},
-            { name: '猪肉' ,num: 1, remark: "adfasdfafa"},
-            { name: '猪肉' ,num: 1, remark: "adfasdfafa"},
-            { name: '猪肉' ,num: 1, remark: "adfasdfafa"},
-          ]
-        }
-      ],
+      // dataSource: [
+      //   {
+      //     name: '蔬菜类',
+      //     category_id: 112, 
+      //     categoryItem: [
+      //       { name: '青菜', num: 1, remark: "sssafdfa" },
+      //       { name: '青菜', num: 1, remark: "sssafdfa" },
+      //       { name: '青菜', num: 1, remark: "sssafdfa" },
+      //       { name: '青菜', num: 1, remark: "sssafdfa" },
+      //       { name: '青菜', num: 1, remark: "sssafdfa" },
+      //       { name: '青菜', num: 1, remark: "sssafdfa" },
+      //       { name: '青菜', num: 1, remark: "sssafdfa" },
+      //       { name: '青菜', num: 1, remark: "sssafdfa" },
+      //       { name: '青菜', num: 1, remark: "sssafdfa" },
+      //       { name: '青菜', num: 1, remark: "sssafdfa" },
+      //       { name: '青菜', num: 1, remark: "sssafdfa" },
+      //       { name: '青菜', num: 1, remark: "sssafdfa" },
+      //     ]
+      //   },
+      //    {
+      //     name: '肉类',
+      //     categoryItem: [
+      //       { name: '猪肉' ,num: 1, remark: "adfasdfafa"},
+      //       { name: '猪肉' ,num: 1, remark: "adfasdfafa"},
+      //       { name: '猪肉' ,num: 1, remark: "adfasdfafa"},
+      //       { name: '猪肉' ,num: 1, remark: "adfasdfafa"},
+      //       { name: '猪肉' ,num: 1, remark: "adfasdfafa"},
+      //       { name: '猪肉' ,num: 1, remark: "adfasdfafa"},
+      //       { name: '猪肉' ,num: 1, remark: "adfasdfafa"},
+      //       { name: '猪肉' ,num: 1, remark: "adfasdfafa"},
+      //       { name: '猪肉' ,num: 1, remark: "adfasdfafa"},
+      //       { name: '猪肉' ,num: 1, remark: "adfasdfafa"},
+      //       { name: '猪肉' ,num: 1, remark: "adfasdfafa"},
+      //       { name: '猪肉' ,num: 1, remark: "adfasdfafa"},
+      //       { name: '猪肉' ,num: 1, remark: "adfasdfafa"},
+      //     ]
+      //   }
+      // ],
     }
   },
   components: {
@@ -98,14 +91,15 @@ export default {
   },
   data () {
     return {
-      // dataSource: [],
+      dataSource: [],
       selected: null,
       topStatus: '',
       searchKey: '',
       scrollTop: 0,
       editData: {},
-      catagoryIndex: 0,
-      popupVisible: false,
+      categoryIndex: 0,
+      // popupVisible: false,
+      categoryList: [],
     };
   },
   methods: {
@@ -116,16 +110,16 @@ export default {
 
     },
     chooseHandler(index) {
-      this.catagoryIndex = index
+      this.categoryIndex = index
     },
-    addCategory() {
-      this.popupVisible = false
-    },
-    addHandler() {
-      this.popupVisible = true
+    // addCategory() {
+    //   this.popupVisible = false
+    // },
+    saveHandler() {
+      
     },
     editHandler() {
-      this.$router.push({path: '/menu/catagory', query: {}})
+      this.$router.push({path: '/menu/category', query: this.categoryList[this.categoryIndex]})
     },
     loadTop() {
       console.log('load top')
@@ -155,9 +149,22 @@ export default {
     }
   },
   mounted() {
-    this.$fetch('/vegetable').then(res => {
-      console.log(res)
+    this.$fetch('/template').then(res => {
+      if(res.data.length) {
+        res.data.some(e => {
+          if(e.template_id == this.$route.query.temid) {
+            this.dataSource = e
+            return true
+          }
+        })
+      }
     })
+    this.$fetch('/category').then(res => {
+      this.categoryList = res.data
+    })
+    // this.$fetch('/vegetable').then(res => {
+      // console.log(res)
+    // })
   },
 }
 

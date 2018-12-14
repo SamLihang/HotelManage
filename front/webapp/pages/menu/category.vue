@@ -9,7 +9,7 @@
           <mt-checklist
             align="right"
             v-model="data"
-            :options="dataSource.catagoryItem">
+            :options="dataSource">
           </mt-checklist>
           <!-- <mt-cell :title="item.name" >1212</mt-cell> -->
         <!-- </div> -->
@@ -30,10 +30,10 @@ export default {
   },
   data () {
     return {
-      dataSource: {
-        name: '蔬菜类',
-        catagoryItem: ['青菜1', '青菜2', '青菜3', '青菜4', '青菜5', '青菜6', '青菜7', '青菜8']
-      },
+      dataSource: [
+        // name: '蔬菜类',
+        // catagoryItem: ['青菜1', '青菜2', '青菜3', '青菜4', '青菜5', '青菜6', '青菜7', '青菜8']
+      ],
       data: [],
     }
   },
@@ -59,16 +59,27 @@ export default {
     },
     getVegetables() {
       let query = this.$route.query
+      let vegetList = []
       if(query && query.category_id) {
         this.$fetch(`/vegetable`).then(res => {
-          console.log(res)
+          if(res.data.length) {
+            res.data.every(e => {
+              if(e.category_id == 0) {
+                e.label = e.vegetable_name
+                vegetList.push(e)
+              }
+              return true
+            })
+            this.dataSource = vegetList
+          }
         })       
       }
     }
   },
   computed: {
     ...mapState({
-      height: store => {return store.height}
+      height: store => {return store.height},
+      menu: store => {return JSON.parse(store.menu)}
     }),
     scrollHeight() {
       return this.height - 40 - 41
@@ -76,6 +87,19 @@ export default {
   },
   mounted() {
     this.getVegetables()
+    this.$store.commit('getMenu')
+    this.$nextTick(() => {
+      this.menu.some(e => {
+        if(e.category_id == this.$route.query.category_id) {
+          let _data = []
+          e.categoryItem.forEach(element => {
+            element.categoryItem = element.vegetable_name
+            _data.push(element)
+          });
+          this.data = _data
+        }
+      })
+    })
   }
 }
 </script>

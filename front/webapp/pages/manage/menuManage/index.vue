@@ -6,7 +6,7 @@
     </mt-header>
     <base-scroll :height="scrollHeight" class="scroller" @loadTop="loadTop" @loadBottom="loadBottom" ref="scroll">
       <div class="content">
-        <mt-cell v-for="(item, index) in dataSource" @click.stop.native="clickHandler" :key="index" :title="item.name"></mt-cell>
+        <mt-cell v-for="(item, index) in dataSource" @click.stop.native="clickHandler(item.template_id)" :key="index" :title="item.template_name"></mt-cell>
       </div>
     </base-scroll>
     <mt-button size="large" type="primary" @click.native="addHandler" class="addBtn">新增</mt-button>
@@ -46,14 +46,14 @@ export default {
         this.$refs.scroll.bottomLoaded()
       }, 1000);
     },
-    clickHandler() {
-      this.$router.push('/manage/menuManage/moduleedit')
+    clickHandler(temid) {
+      this.$router.push({path: '/manage/menuManage/moduleedit', query: {temid: temid}})
     },
     addHandler() {
       MessageBox.prompt('请输入模版名称').then(({ value }) => {
         if(value) {
-          this.$fetch('/template', {Userid: , TemplateName: , Template}, 'post').then(res => {
-            console.log(res)
+          this.$fetch('/template', {userid: 20, template_name: value, template: JSON.stringify([])}, 'post').then(res => {
+            // this.$router.push(path: '/manage/menuManage/moduleedit', query: {temid: res.})
           })
         }
       });

@@ -5,7 +5,8 @@ const createStore = () => {
     state: () => ({
       height: 0,
       token: "",
-      menu: {},
+      menu: "",
+      userid: null,
     }),
     mutations: {
       setHeight(state, payload) {
@@ -18,7 +19,10 @@ const createStore = () => {
         state.token = ""
       },
       setMenu(state, payload) {
-        state.menu = payload
+        state.menu = localStorage.menu = payload
+      },
+      getMenu(state) {
+        state.menu = localStorage.menu || ""
       }
     }
   })
