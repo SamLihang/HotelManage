@@ -4,20 +4,22 @@ import Router from 'vue-router'
 const _4a82554d = () => import('../pages/statistics/index.vue' /* webpackChunkName: "pages/statistics/index" */).then(m => m.default || m)
 const _342813bd = () => import('../pages/mine/index.vue' /* webpackChunkName: "pages/mine/index" */).then(m => m.default || m)
 const _01c655d6 = () => import('../pages/login/index.vue' /* webpackChunkName: "pages/login/index" */).then(m => m.default || m)
-const _46dc168f = () => import('../pages/manage/index.vue' /* webpackChunkName: "pages/manage/index" */).then(m => m.default || m)
-const _2a9fa632 = () => import('../pages/saveImg/index.vue' /* webpackChunkName: "pages/saveImg/index" */).then(m => m.default || m)
 const _6f31b46e = () => import('../pages/menu/index.vue' /* webpackChunkName: "pages/menu/index" */).then(m => m.default || m)
-const _32c16bba = () => import('../pages/manage/dishesManage/index.vue' /* webpackChunkName: "pages/manage/dishesManage/index" */).then(m => m.default || m)
-const _24050cd7 = () => import('../pages/menu/category.vue' /* webpackChunkName: "pages/menu/category" */).then(m => m.default || m)
+const _2a9fa632 = () => import('../pages/saveImg/index.vue' /* webpackChunkName: "pages/saveImg/index" */).then(m => m.default || m)
+const _46dc168f = () => import('../pages/manage/index.vue' /* webpackChunkName: "pages/manage/index" */).then(m => m.default || m)
 const _9e0a302e = () => import('../pages/manage/employManage/index.vue' /* webpackChunkName: "pages/manage/employManage/index" */).then(m => m.default || m)
+const _24050cd7 = () => import('../pages/menu/category.vue' /* webpackChunkName: "pages/menu/category" */).then(m => m.default || m)
+const _5f1e035a = () => import('../pages/menu/template.vue' /* webpackChunkName: "pages/menu/template" */).then(m => m.default || m)
 const _7c225095 = () => import('../pages/statistics/business.vue' /* webpackChunkName: "pages/statistics/business" */).then(m => m.default || m)
+const _32c16bba = () => import('../pages/manage/dishesManage/index.vue' /* webpackChunkName: "pages/manage/dishesManage/index" */).then(m => m.default || m)
 const _e63c0f0c = () => import('../pages/manage/menuManage/index.vue' /* webpackChunkName: "pages/manage/menuManage/index" */).then(m => m.default || m)
+const _2d395e1e = () => import('../pages/manage/menuManage/moduleEdit.vue' /* webpackChunkName: "pages/manage/menuManage/moduleEdit" */).then(m => m.default || m)
 const _e0f9b408 = () => import('../pages/manage/dishesManage/editItem.vue' /* webpackChunkName: "pages/manage/dishesManage/editItem" */).then(m => m.default || m)
-const _5df59a2e = () => import('../pages/manage/dishesManages/editDishes.vue' /* webpackChunkName: "pages/manage/dishesManages/editDishes" */).then(m => m.default || m)
-const _d8f32986 = () => import('../pages/manage/dishesManages/addDishes.vue' /* webpackChunkName: "pages/manage/dishesManages/addDishes" */).then(m => m.default || m)
 const _08332489 = () => import('../pages/manage/dishesManages/dishesManage.vue' /* webpackChunkName: "pages/manage/dishesManages/dishesManage" */).then(m => m.default || m)
 const _721baf26 = () => import('../pages/manage/employManage/authManage.vue' /* webpackChunkName: "pages/manage/employManage/authManage" */).then(m => m.default || m)
-const _2d395e1e = () => import('../pages/manage/menuManage/moduleEdit.vue' /* webpackChunkName: "pages/manage/menuManage/moduleEdit" */).then(m => m.default || m)
+const _d8f32986 = () => import('../pages/manage/dishesManages/addDishes.vue' /* webpackChunkName: "pages/manage/dishesManages/addDishes" */).then(m => m.default || m)
+const _5df59a2e = () => import('../pages/manage/dishesManages/editDishes.vue' /* webpackChunkName: "pages/manage/dishesManages/editDishes" */).then(m => m.default || m)
+const _95dd1ef4 = () => import('../pages/manage/menuManage/category.vue' /* webpackChunkName: "pages/manage/menuManage/category" */).then(m => m.default || m)
 const _8538fe0a = () => import('../pages/index.vue' /* webpackChunkName: "pages/index" */).then(m => m.default || m)
 
 Vue.use(Router)
@@ -95,9 +97,9 @@ export function createRouter () {
 			name: "login"
 		},
 		{
-			path: "/manage",
-			component: _46dc168f,
-			name: "manage"
+			path: "/menu",
+			component: _6f31b46e,
+			name: "menu"
 		},
 		{
 			path: "/saveImg",
@@ -105,19 +107,9 @@ export function createRouter () {
 			name: "saveImg"
 		},
 		{
-			path: "/menu",
-			component: _6f31b46e,
-			name: "menu"
-		},
-		{
-			path: "/manage/dishesManage",
-			component: _32c16bba,
-			name: "manage-dishesManage"
-		},
-		{
-			path: "/menu/category",
-			component: _24050cd7,
-			name: "menu-category"
+			path: "/manage",
+			component: _46dc168f,
+			name: "manage"
 		},
 		{
 			path: "/manage/employManage",
@@ -125,9 +117,24 @@ export function createRouter () {
 			name: "manage-employManage"
 		},
 		{
+			path: "/menu/category",
+			component: _24050cd7,
+			name: "menu-category"
+		},
+		{
+			path: "/menu/template",
+			component: _5f1e035a,
+			name: "menu-template"
+		},
+		{
 			path: "/statistics/business",
 			component: _7c225095,
 			name: "statistics-business"
+		},
+		{
+			path: "/manage/dishesManage",
+			component: _32c16bba,
+			name: "manage-dishesManage"
 		},
 		{
 			path: "/manage/menuManage",
@@ -135,19 +142,14 @@ export function createRouter () {
 			name: "manage-menuManage"
 		},
 		{
+			path: "/manage/menuManage/moduleEdit",
+			component: _2d395e1e,
+			name: "manage-menuManage-moduleEdit"
+		},
+		{
 			path: "/manage/dishesManage/editItem",
 			component: _e0f9b408,
 			name: "manage-dishesManage-editItem"
-		},
-		{
-			path: "/manage/dishesManages/editDishes",
-			component: _5df59a2e,
-			name: "manage-dishesManages-editDishes"
-		},
-		{
-			path: "/manage/dishesManages/addDishes",
-			component: _d8f32986,
-			name: "manage-dishesManages-addDishes"
 		},
 		{
 			path: "/manage/dishesManages/dishesManage",
@@ -160,9 +162,19 @@ export function createRouter () {
 			name: "manage-employManage-authManage"
 		},
 		{
-			path: "/manage/menuManage/moduleEdit",
-			component: _2d395e1e,
-			name: "manage-menuManage-moduleEdit"
+			path: "/manage/dishesManages/addDishes",
+			component: _d8f32986,
+			name: "manage-dishesManages-addDishes"
+		},
+		{
+			path: "/manage/dishesManages/editDishes",
+			component: _5df59a2e,
+			name: "manage-dishesManages-editDishes"
+		},
+		{
+			path: "/manage/menuManage/category",
+			component: _95dd1ef4,
+			name: "manage-menuManage-category"
 		},
 		{
 			path: "/",
