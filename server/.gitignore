@@ -2,3 +2,4 @@ vendor
 .idea
 Gopkg.lock
 Gopkg.toml
+node_modules
